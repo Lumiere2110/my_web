@@ -1,0 +1,328 @@
+/* =========================================================
+   advancements.css ― 進捗トラッカーページ専用のデザイン
+   色は style.css で決めた色（var(--green) など）を使っています。
+   ========================================================= */
+
+.adv-top {
+  margin-top: 32px;
+}
+
+/* ---------- 達成率のバー ---------- */
+.bar {
+  height: 10px;
+  background-color: var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  width: 0%;                         /* JavaScriptがここを 0〜100% に変えます */
+  background-color: var(--green);
+  box-shadow: 0 0 12px rgba(61, 255, 143, 0.6);
+  transition: width 0.4s;            /* バーがなめらかに伸びる */
+}
+
+/* 全体の達成率 */
+.total {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.total-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+#total-text {
+  color: var(--green);
+  font-family: Consolas, monospace;
+}
+
+/* ---------- カテゴリー別の達成率 ---------- */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+.cat-box {
+  padding: 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.cat-box h3 {
+  font-size: 1rem;
+}
+.cat-num {
+  font-family: Consolas, monospace;
+  color: var(--text-sub);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+/* 100%達成したカテゴリーは枠を光らせる */
+.cat-box.complete {
+  border-color: var(--green);
+  box-shadow: 0 0 16px rgba(61, 255, 143, 0.25);
+}
+
+/* ---------- タブとオプション ---------- */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tab {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--text-sub);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.tab:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+.tab.active {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+.reset {
+  background: none;
+  border: 1px solid #7a2e2e;
+  color: #ff7b7b;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reset:hover {
+  background-color: #7a2e2e;
+  color: #fff;
+}
+
+/* ---------- 説明と凡例 ---------- */
+.adv-note {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+.legend {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 4px 0 10px;
+  vertical-align: middle;
+  border: 2px solid var(--green-dark);
+}
+.legend.goal { border-radius: 50%; border-color: var(--green); }
+.legend.challenge { border-color: #b65cff; box-shadow: 0 0 6px #b65cff; }
+
+/* 検索ボックス */
+.search {
+  background-color: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 4px;
+  width: 220px;
+}
+.search:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+/* ---------- アイコン ---------- */
+.adv-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0c130f;
+  border: 2px solid var(--green-dark);   /* 通常(task)の枠：四角 */
+}
+.adv-icon img {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;           /* ドット絵をくっきり表示 */
+}
+.adv-icon.goal {                        /* 目標(goal)の枠：丸 */
+  border-radius: 50%;
+  border-color: var(--green);
+}
+.adv-icon.challenge {                   /* 挑戦(challenge)の枠：紫に光る */
+  border-color: #b65cff;
+  box-shadow: 0 0 10px rgba(182, 92, 255, 0.5);
+}
+.adv-icon.small {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: none;
+}
+.adv-icon.small img {
+  width: 22px;
+  height: 22px;
+}
+.adv-icon.empty.small { display: none; }
+.cat-box .adv-icon.small { float: right; }
+
+/* ---------- 進捗リスト ---------- */
+.adv-list {
+  list-style: none;
+}
+.adv-item {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background-color: var(--bg-card);
+  transition: 0.15s;
+}
+.adv-item:hover {
+  border-color: var(--green-dark);
+}
+.adv-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+/* チェックボックス */
+.adv-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--green);   /* チェックボックスを緑色に */
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.adv-text {
+  flex: 1;
+  min-width: 0;
+}
+.adv-name {
+  font-weight: bold;
+}
+.adv-en {
+  color: var(--text-sub);
+  font-size: 0.75rem;
+  font-family: Consolas, monospace;
+}
+.adv-desc {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+.adv-cat,
+.adv-frame {
+  font-size: 0.7rem;
+  color: var(--green);
+  border: 1px solid var(--green-dark);
+  border-radius: 20px;
+  padding: 0 8px;
+  margin-left: 8px;
+  font-weight: normal;
+}
+.adv-frame {
+  color: #d29bff;
+  border-color: #6b3a99;
+}
+.adv-frame.goal {
+  color: var(--green);
+  border-color: var(--green-dark);
+}
+
+/* 「12 / 41 ▼」のボタン */
+.sub-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--green);
+  font-family: Consolas, monospace;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sub-toggle:hover { border-color: var(--green); }
+.adv-item.open .sub-toggle { background-color: var(--line); }
+
+/* 細かい項目のパネル */
+.sub-panel {
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--line);
+}
+.sub-bar {
+  height: 6px;
+  margin: 12px 0;
+}
+.sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+}
+.sub-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.sub-item:hover { border-color: var(--green-dark); }
+.sub-item input[type="checkbox"] { width: 16px !important; height: 16px !important; }
+.sub-item.checked {
+  border-color: var(--green-dark);
+  color: var(--green);
+}
+
+/* 達成済みの進捗 */
+.adv-item.done {
+  border-color: var(--green-dark);
+}
+.adv-item.done .adv-row { opacity: 0.6; }
+.adv-item.done .adv-name {
+  color: var(--green);
+  text-decoration: line-through;  /* 取り消し線 */
+}
+
+/* 「達成済みを隠す」がオンのとき */
+.adv-list.hide-done .adv-item.done {
+  display: none;
+}
+
+.adv-empty {
+  color: var(--text-sub);
+  padding: 20px;
+  text-align: center;
+}
+
+/* スマホ用 */
+@media (max-width: 600px) {
+  .adv-row { padding: 10px; gap: 10px; flex-wrap: wrap; }
+  .adv-text { flex-basis: calc(100% - 90px); }
+  .search { width: 100%; }
+  .options { flex-wrap: wrap; }
+}

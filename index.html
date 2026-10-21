@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- ↑ 「これはHTMLファイルです」という宣言。必ず1行目に書きます -->
+<html lang="ja">
+
+<!-- ===== head：ブラウザ向けの設定（画面には表示されない） ===== -->
+<head>
+  <meta charset="UTF-8">  <!-- 日本語が文字化けしないための設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- スマホ対応 -->
+  <title>My Portfolio</title>  <!-- ブラウザのタブに表示される名前 -->
+  <link rel="stylesheet" href="style.css">  <!-- デザインファイル(style.css)を読み込む -->
+</head>
+
+<!-- ===== body：画面に表示される中身 ===== -->
+<body>
+
+  <!-- ヘッダー（上部メニュー）。4ページとも同じ内容です -->
+  <header class="header">
+    <a href="index.html" class="logo">&lt;YourName /&gt;</a>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>   <!-- 今いるページに class="active" -->
+      <a href="about.html">About</a>
+      <a href="works.html">Works</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 大きな自己紹介エリア -->
+    <section class="hero">
+      <p class="hero-small">// Hello, World!</p>
+      <h1>こんにちは、<br><span class="glow">中村 悠登</span> です。</h1>
+      <p>ようこそわが世界へ！</p>
+      <div>
+        <a href="works.html" class="button">作品を見る</a>
+        <a href="about.html" class="button">自己紹介</a>
+      </div>
+    </section>
+
+    <!-- 最新の作品（3つだけ紹介） -->
+    <section>
+      <h2>Latest Works</h2>
+      <div class="cards">
+
+        <a href="https://claude.ai/artifact/87Ac6ER9rVqyrskoAhkS92" class="card" target="_blank">
+          <div class="card-image"></div>  <!-- 画像を入れるときは下の説明を参照 -->
+          <div class="card-body">
+            <h3>マイクラmod検索</h3>
+            <p>作品の短い説明文。</p>
+            <span class="tag">Web</span>
+          </div>
+        </a>
+
+        <a href="https://example.com/" class="card" target="_blank">
+          <div class="card-image"></div>
+          <div class="card-body">
+            <h3>作品タイトル 2</h3>
+            <p>作品の短い説明文。</p>
+            <span class="tag">デザイン</span>
+          </div>
+        </a>
+
+        <a href="https://claude.ai/artifact/4rUAtp9wFV2xARuPC4ooaP" class="card" target="_blank">
+          <div class="card-image"></div>
+          <div class="card-body">
+            <h3>詩帖</h3>
+            <p>作品の短い説明文。</p>
+            <span class="tag">イラスト</span>
+          </div>
+        </a>
+
+      </div>
+      <a href="works.html" class="button">すべての作品 →</a>
+    </section>
+
+  </main>
+
+  <!-- フッター（ページ下部） -->
+  <footer class="footer">
+    <p>&copy; 2026 YourName</p>
+  </footer>
+
+</body>
+</html>

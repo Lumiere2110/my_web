@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイクラ進捗トラッカー</title>
+  <link rel="stylesheet" href="style.css">          <!-- サイト共通のデザイン -->
+  <link rel="stylesheet" href="advancements.css">   <!-- このページ専用のデザイン -->
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="logo">&lt;YourName /&gt;</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="works.html" class="active">Works</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a href="works.html">← 作品一覧へ戻る</a>
+
+    <section class="adv-top">
+      <p class="hero-small">// Minecraft Advancements</p>
+      <h1>マイクラ <span class="glow">進捗トラッカー</span></h1>
+      <p>達成した進捗にチェックを入れましょう。チェックはこのブラウザに自動で保存されます。</p>
+      <p class="adv-note">
+        Java版 26.3 対応。「モンスター狩りの達人」や「バランスの取れた食事」など条件が多い進捗は、
+        右側の「▼」から倒したモブ・食べた物などを1つずつ記録できます。
+        アイコンの枠：<span class="legend task"></span>通常 <span class="legend goal"></span>目標 <span class="legend challenge"></span>挑戦
+      </p>
+
+      <!-- 全体の達成率（数字とバーは advancements.js が自動で書き換えます） -->
+      <div class="total">
+        <div class="total-label">
+          <span>全体の達成率</span>
+          <span id="total-text">0 / 0（0%）</span>
+        </div>
+        <div class="bar"><div class="bar-fill" id="total-bar"></div></div>
+      </div>
+    </section>
+
+    <!-- カテゴリーごとの達成率（advancements.js が中身を作ります） -->
+    <section>
+      <h2>カテゴリー別</h2>
+      <div class="cat-grid" id="cat-grid"></div>
+    </section>
+
+    <!-- 進捗のリスト -->
+    <section>
+      <h2>進捗リスト</h2>
+
+      <div class="toolbar">
+        <!-- カテゴリーの切り替えボタン（advancements.js が作ります） -->
+        <div class="tabs" id="tabs"></div>
+
+        <div class="options">
+          <input type="search" id="search" class="search" placeholder="進捗・モブ・食べ物で検索">
+          <label><input type="checkbox" id="hide-done"> 達成済みを隠す</label>
+          <button type="button" class="reset" id="reset">リセット</button>
+        </div>
+      </div>
+
+      <ul class="adv-list" id="adv-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 YourName</p>
+  </footer>
+
+  <!-- ページを動かすプログラム。HTMLを読み込んだ後に実行するため一番下に書きます -->
+  <script src="advancements-data.js"></script>  <!-- 進捗のデータ -->
+  <script src="advancements.js"></script>       <!-- 動きのプログラム -->
+
+</body>
+</html>
