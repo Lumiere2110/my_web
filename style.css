@@ -175,6 +175,45 @@ section {
   gap: 24px;
 }
 
+/* 横4列で並べる（作品ページ用）。画面が狭いときは2列 → 1列に減らす */
+.cards-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cards-4 .card-image {
+  height: 110px;
+}
+.cards-4 .card-body {
+  padding: 14px;
+}
+.cards-4 .card-body h3 {
+  font-size: 1rem;
+}
+@media (max-width: 860px) {
+  .cards-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .cards-4 { grid-template-columns: 1fr; }
+}
+
+/* 一番上の大きなカード（Record） */
+.card-featured {
+  margin-bottom: 32px;
+  border-color: var(--green-dark);
+  background: linear-gradient(135deg, #13261b, var(--bg-card) 60%);
+}
+.card-featured .card-body {
+  padding: 28px;
+}
+.card-featured h3 {
+  font-size: 1.5rem;
+}
+.featured-label {
+  font-family: Consolas, "Courier New", monospace;
+  color: var(--green) !important;
+  margin-bottom: 4px !important;
+}
+
 /* カード1枚（リンクになっているので、文字色や下線をふつうのリンクと変えています） */
 .card {
   display: block;
