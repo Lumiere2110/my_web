@@ -254,6 +254,29 @@ section {
   margin-bottom: 8px;
 }
 
+/* カードの中に並べるボタン（リンクが2つ以上あるカード用） */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.card-link {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border: 1px solid var(--green);
+  border-radius: 6px;
+  color: var(--green);
+  text-decoration: none;
+  transition: 0.2s;
+}
+.card-link:hover,
+.card-link:focus-visible {
+  background-color: var(--green);
+  color: var(--bg);
+  text-decoration: none;
+}
+
 /* 「Web」「デザイン」などの小さなラベル */
 .tag {
   display: inline-block;
